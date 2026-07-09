@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <title>Репетирор онлайн</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body id="index">
+    <!--Голова-->
+    <header id="main-header">
+      <div class="header-container">
+          <a href="#" class="logo">CoffeeMath</a>
+  
+          <nav class="main-nav">
+              <ul>
+                  <li><a href="index.html">Главная</a></li>
+                  <li><a href="#">Список</a></li>
+                  <li><a href="#">О нас</a></li>
+                  <li><a href="#">Контакты</a></li>
+              </ul>
+          </nav>
+  
+          <div class="header-actions">
+            <button class="btn-header trigger-btn">Оставить заявку</button>
+          </div>
+      </div>
+  </header>
+  <!--Конец головы-->
+
+ <!--Бегущая строка-->
+ <div class="marquee-wrapper">
+  <div class="marquee-content">
+      Помощь школьникам 5–8 класс с разбором школьной программы. Подготовка 9–11 класс к ОГЭ и профильной или базовой математике. Помощь студентам с подготовкой к экзаменам.
+      Помощь школьникам 5–8 класс с разбором школьной программы. Подготовка 9–11 класс к ОГЭ и профильной или базовой математике. Помощь студентам с подготовкой к экзаменам.
+      Помощь школьникам 5–8 класс с разбором школьной программы. Подготовка 9–11 класс к ОГЭ и профильной или базовой математике. Помощь студентам с подготовкой к экзаменам.
+  </div>
+</div>
+<br>
+<!--Конец бегущей строки-->
+
+<!--Начало панели-->
+<section class="hero-section">
+  <div class="hero-content">
+      <h1 class="hero-title">Подготовка к ЕГЭ и ОГЭ по математике</h1>
+      <p class="hero-subtitle">Помогу разобраться в сложных темах и уверенно сдать экзамен.</p>
+      <a href="level-select.html" class="hero-btn">Проверка уровню знаний</a>
+  </div>
+</section>
+<br>
+ <!--Конец панели-->  
+
+
+ <!--Всплывающее окно-->
+<!-- Кнопка, которая вручную открывает окно (опционально) -->
+<button id="open-popup-btn" class="trigger-btn">Хочу пробный урок</button>
+
+<!-- Всплывающее окно -->
+<div id="popup-overlay" class="popup-overlay">
+  <div class="popup-window">
+    <h1>Получите пробный урок бесплатно!</h1>
+    <p>Оцените методику и подход — без обязательств.</p>
+
+    <form id="popup-form" class="popup-form">
+      <input type="text" name="name" placeholder="Ваше имя" required>
+      <input type="tel" name="phone" placeholder="Ваш телефон" required>
+      <button type="submit" class="submit-btn">Отправить заявку</button>
+    </form>
+
+    <button id="close-popup-btn" class="close-btn">&times;</button>
+  </div>
+</div>
+<!-- Окно успешной отправки -->
+<div id="popup-success" class="popup-overlay">
+    <div class="popup-window success-window">
+        <div class="success-icon-wrapper">
+            <div class="success-icon">✔</div>
+        </div>
+        <h2>Спасибо за заявку!</h2>
+        <p>Мы свяжемся с вами в ближайшее время.</p>
+        <button id="close-success-btn" class="submit-btn success-btn">Отлично!</button>
+    </div>
+</div>
+<br>
+ <!--Конец всплывающего окна-->
+
+ <!--Начала блока узнай программу-->
+ <section class="education-section">
+  <div class="edu-container">
+      <h2 class="edu-title">Узнай программу обучения по каждому разделу</h2>
+      
+      <div class="edu-grid">
+        <!-- Карточка 1: 5-8 класс -->
+        <div class="edu-card">
+            <img src="imges/book.png" alt="5-8 класс" class="edu-simple-icon">
+            <h3 class="edu-card-title">5–8 класс</h3>
+            <p class="edu-card-desc">Разбор школьной программы, выравнивание знаний и формирование прочного фундамента.</p>
+            <br>
+            <a href="#" class="edu-link">Узнать подробнее →</a>
+        </div>
+    
+        <!-- Карточка 2: ОГЭ -->
+        <div class="edu-card">
+            <img src="imges/img-1.png" alt="ОГЭ" class="edu-simple-icon">
+            <h3 class="edu-card-title">ОГЭ</h3>
+            <p class="edu-card-desc">Подготовка к сдаче ОГЭ, разбор типовых задач и стратегия.</p>
+            <br>
+            <a href="#" class="edu-link">Узнать подробнее →</a>
+        </div>
+    
+        <!-- Карточка 3: ЕГЭ -->
+        <div class="edu-card">
+            <img src="imges/img-1.png" alt="ЕГЭ" class="edu-simple-icon">
+            <h3 class="edu-card-title">ЕГЭ (профиль)</h3>
+            <p class="edu-card-desc">Подготовка к сдаче ЕГЭ (базовый и профильный уровни), разбор сложных задач.</p>
+            <br>
+            <a href="#" class="edu-link">Узнать подробнее →</a>
+        </div>
+    
+        <!-- Карточка 4: Высшая математика -->
+        <div class="edu-card">
+            <img src="imges/delete.png" alt="Высшая математика" class="edu-simple-icon">
+            <h3 class="edu-card-title">Высшая математика</h3>
+            <p class="edu-card-desc">Помощь студентам: пределы, производные, интегралы, линейная алгебра и аналитическая геометрия.</p>
+            <a href="test.html?level=highmath" class="edu-link">Пройти тест →</a>
+            <br>
+        </div>
+    </div>
+
+      <div class="edu-cta-wrapper">
+        <a href="#to-calc" class="calc-btn">РАССЧИТАТЬ СТОИМОСТЬ ЗАНЯТИЙ</a>
+      </div>
+  </div>
+</section>
+<br>
+<!--Конец блока узнай программу-->
+
+
+
+<!--Таблица про наши работу-->
+<section class="services-section">
+  <div class="container">
+      <h2 class="section-title">Что мы делаем для разных уровней</h2>
+      
+      <div class="cards-wrapper">
+          <!-- Карточка 1: 5-8 классы -->
+          <div class="card card-light">
+              <div class="card-header">
+                  <span class="icon-box icon-school">📚</span>
+                  <h3 class="card-subtitle">5–8 классы</h3>
+              </div>
+              <ul class="card-list">
+                  <li>Разбираем темы школьной программы и закрепляем их на практике.</li>
+                  <li>Даем индивидуальные домашние задания для отработки навыков.</li>
+                  <li>Поддерживаем связь с родителями для контроля прогресса.</li>
+              </ul>
+          </div>
+
+          <!-- Карточка 2: 9-11 классы -->
+          <div class="card card-mid">
+              <div class="card-header">
+                  <span class="icon-box icon-exam">🎓</span>
+                  <h3 class="card-subtitle">9–11 классы</h3>
+              </div>
+              <ul class="card-list">
+                  <li>Строим базу под экзамен: теория + решение типовых задач.</li>
+                  <li>Домашние задания — прототипы реальных экзаменационных вопросов.</li>
+                  <li>Раз в месяц проводим пробники для проверки знаний.</li>
+              </ul>
+          </div>
+
+          <!-- Карточка 3: Студенты -->
+          <div class="card card-dark">
+              <div class="card-header">
+                  <span class="icon-box icon-uni">📈</span>
+                  <h3 class="card-subtitle">Студенты</h3>
+              </div>
+              <ul class="card-list">
+                  <li>Разбираем сложные темы высшей математики и применяем их.</li>
+                  <li>Подбираем литературу и даем задания из проверенных сборников.</li>
+                  <li>Помогаем с нестандартными задачами и проектами.</li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Общий блок поддержки (вместо повторения в каждой карточке) -->
+      <div class="support-banner">
+          <span class="support-icon">⏰</span>
+          <p>Мы на связи и готовы помочь с любыми вопросами</p>
+          <strong>с 08:00 до 23:00 по московскому времени</strong>
+      </div>
+  </div>
+</section>
+
+<!--Конец таблицы-->
+
+<!--Панеле результатов-->
+<section class="stats-section">
+  <div class="stats-container">
+      <div class="stat-item">
+          <span class="stat-number">4,5</span>
+          <span class="stat-label">Средний балл ОГЭ</span>
+      </div>
+      <div class="stat-item">
+          <span class="stat-number">75+</span>
+          <span class="stat-label">Средний балл ЕГЭ</span>
+      </div>
+      <div class="stat-desc">
+          <h3>Онлайн-уроки</h3>
+          <p>Подготовка школьников и студентов по всей России</p>
+      </div>
+  </div>
+</section>
+
+<!--Конец панели результатов-->
+
+
+<!--Кнопки с информацией-->
+
+<section class="courses-section">
+  <div class="courses-container" >
+      <!-- Кнопка 1: 5-8 класс -->
+      <div class="course-card">
+          <button class="course-btn" data-target="content-58">
+              <span class="btn-title">5-8 класс</span>
+              <span class="btn-subtitle">Базовый курс, выравнивание знаний</span>
+          </button>
+          <div id="content-58" class="course-content">
+              <h4>5-8 класс</h4>
+              <p>Курс построен так, чтобы закрыть пробелы в знаниях и сформировать прочный фундамент. Мы разбираем темы, которые вызывают трудности у большинства школьников: дроби, проценты, уравнения, геометрия. Занятия проходят в спокойном темпе, чтобы ребенок не боялся математики и научился решать задачи самостоятельно.</p>
+          </div>
+      </div>
+
+      <!-- Кнопка 2: ОГЭ -->
+      <div class="course-card">
+          <button class="course-btn" data-target="content-oge">
+              <span class="btn-title">ОГЭ</span>
+              <span class="btn-subtitle">Системная подготовка к экзамен, решение задач</span>
+          </button>
+          <div id="content-oge" class="course-content">
+              <h4>ОГЭ</h4>
+              <p>Подготовка к ОГЭ — это не просто решение вариантов. Мы разбираем каждую тему из кодификатора, учимся избегать типичных ошибок и правильно оформлять ответы. На занятиях отрабатываем задания первой и второй части, чтобы ученик уверенно чувствовал себя на экзамене.</p>
+          </div>
+      </div>
+
+      <!-- Кнопка 3: ЕГЭ -->
+      <div class="course-card">
+          <button class="course-btn" data-target="content-ege">
+              <span class="btn-title">ЕГЭ</span>
+              <span class="btn-subtitle">Углубленная подготовка, решение сложных задач</span>
+          </button>
+          <div id="content-ege" class="course-content">
+              <h4>ЕГЭ</h4>
+              <p>Курс для тех, кто хочет получить высокий балл. Мы разбираем все типы задач, включая самые сложные (№17, №18). Учим не просто решать, а видеть логику задачи и выбирать оптимальный способ решения. Регулярно пишем пробники и анализируем результаты.</p>
+          </div>
+      </div>
+
+      <!-- Кнопка 4: Высшая математика -->
+      <div class="course-card">
+          <button class="course-btn" data-target="content-vm">
+              <span class="btn-title">Высшая математика</span>
+              <span class="btn-subtitle">Помощь студентам: пределы, производные, интегралы</span>
+          </button>
+          <div id="content-vm" class="course-content">
+              <h4>Высшая математика</h4>
+              <p>Помощь студентам в освоении сложных разделов математики: пределы, производные, интегралы, ряды, линейная алгебра и аналитическая геометрия. Разбираем теорию на понятных примерах и решаем задачи разной сложности, чтобы студент мог уверенно сдавать зачеты и экзамены.</p>
+          </div>
+      </div>
+  </div>
+
+  <!-- Общий поясняющий текст -->
+  <div class="courses-intro" style="font-size: 20px;">
+      Интересует, за счёт чего достигаются наши результаты? Ознакомьтесь с программой и методами обучения по каждому разделу: покажем, как теория сочетается с практикой, как мы работаем над ошибками и готовим к реальным экзаменационным заданиям.
+  </div>
+</section>
+
+<!--Конец кнопок-->
+
+<!--Блок цены-->
+<section id="sena" class="services-section">
+    <h2 class="section-title">Услуги и цены</h2>
+    <div class="services-grid">
+        <div class="service-card card-school">
+            <div class="card-icon">🎒</div>
+            <h3 class="card-title">Школьная программа (5–8 класс)</h3>
+            <p class="card-desc">Устранение пробелов, помощь с ДЗ, адаптация к новым темам.</p>
+            <div class="card-price">от 900 ₽ / урок</div>
+        </div>
+        <div class="service-card card-school">
+            <div class="card-icon">📝</div>
+            <h3 class="card-title">Подготовка к ОГЭ по математике</h3>
+            <p class="card-desc">Систематизация знаний, типовые задачи, тренировка бланков.</p>
+            <div class="card-price">от 1 000 ₽ / урок</div>
+        </div>
+        <div class="service-card card-advanced">
+            <div class="card-icon">📐</div>
+            <h3 class="card-title">ЕГЭ по математике (база и профиль)</h3>
+            <p class="card-desc">Разбор всех типов заданий, пробники, работа над ошибками.</p>
+            <div class="card-price">от 1 200 ₽ / урок</div>
+        </div>
+        <div class="service-card card-advanced">
+            <div class="card-icon">🎓</div>
+            <h3 class="card-title">Высшая математика (вуз)</h3>
+            <p class="card-desc">Линейная алгебра, матанализ, теория вероятностей.</p>
+            <div class="card-price">от 1 500 ₽ / урок</div>
+        </div>
+    </div>
+</section>
+<br>
+
+ <!--Всплывающее окно 2-->
+
+<!-- Кнопка, которая вручную открывает окно (опционально) -->
+<button class="trigger-btn">Хочу пробный урок</button>
+<br>
+
+<!--Конец блока цена-->
+
+<!--Калькулятор-->
+<div id="to-calc" class="calculator-wrapper">
+    <h3>☕ Рассчитайте стоимость занятий</h3>
+
+    <div class="calculator-form">
+        <!-- Частота -->
+        <div class="form-group">
+            <label>Частота занятий:</label>
+            <div class="custom-select" data-select="frequency">
+                <div class="select-selected">2 раза в неделю</div>
+                <div class="select-items">
+                    <div data-value="1">1 раз в неделю</div>
+                    <div data-value="2" class="selected">2 раза в неделю</div>
+                    <div data-value="3">3 раза в неделю</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Длительность -->
+        <div class="form-group">
+            <label>Длительность курса:</label>
+            <div class="custom-select" data-select="duration">
+                <div class="select-selected">12 месяцев</div>
+                <div class="select-items">
+                    <div data-value="1">1 месяц</div>
+                    <div data-value="2">2 месяца</div>
+                    <div data-value="3">3 месяца</div>
+                    <div data-value="4">4 месяца</div>
+                    <div data-value="5">5 месяцев</div>
+                    <div data-value="6">6 месяцев</div>
+                    <div data-value="7">7 месяцев</div>
+                    <div data-value="8">8 месяцев</div>
+                    <div data-value="9">9 месяцев</div>
+                    <div data-value="10">10 месяцев</div>
+                    <div data-value="11">11 месяцев</div>
+                    <div data-value="12" class="selected">12 месяцев</div>
+                    <div data-value="18">18 месяцев</div>
+                    <div data-value="24">24 месяца</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Курс -->
+        <div class="form-group">
+            <label>Курс:</label>
+            <div class="custom-select" data-select="course">
+                <div class="select-selected">5 класс</div>
+                <div class="select-items">
+                    <div data-value="900" class="selected">5 класс</div>
+                    <div data-value="900">6 класс</div>
+                    <div data-value="900">7 класс</div>
+                    <div data-value="900">8 класс</div>
+                    <div data-value="1000">ОГЭ</div>
+                    <div data-value="1200">ЕГЭ (Базовый)</div>
+                    <div data-value="1500">ЕГЭ (Профельный)</div>
+                    <div data-value="1500">Высшая математика</div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" onclick="calculatePriceCustom()" class="calc-btn">Рассчитать</button>
+    </div>
+
+    <div class="calculator-result">
+        <p>Итоговая стоимость:</p>
+        <span id="total-price">0 ₽</span>
+        <p id="details" style="font-size: 0.9em; color: #7f5e48; margin-top: 5px;"></p>
+    </div>
+</div>
+<!--Конец калькулятора-->
+
+<!--Блок с вопросами-->
+<section class="faq-accordion">
+  <h3>Часто задаваемые вопросы</h3>
+  
+  <div class="accordion-container">
+      <!-- Вопрос 1 -->
+      <button class="accordion-btn">
+          <span class="question-text">Как проходят занятия онлайн?</span>
+          <span class="icon">+</span>
+      </button>
+      <div class="accordion-panel">
+          <p>Занятия проходят на платформе Zoom или Google Meet. Мы используем виртуальную доску для записи формул и решения задач в реальном времени.</p>
+      </div>
+
+      <!-- Вопрос 2 -->
+      <button class="accordion-btn">
+          <span class="question-text">Есть ли пробное занятие?</span>
+          <span class="icon">+</span>
+      </button>
+      <div class="accordion-panel">
+          <p>Да, первое занятие длится 30 минут и является бесплатным. На нем мы определим уровень знаний и составим индивидуальный план подготовки.</p>
+      </div>
+
+      <!-- Вопрос 3 -->
+      <button class="accordion-btn">
+          <span class="question-text">Как оплачивать занятия?</span>
+          <span class="icon">+</span>
+      </button>
+      <div class="accordion-panel">
+          <p>Вы можете оплатить курс целиком или вносить оплату за каждое занятие отдельно. Доступны переводы на карту и оплата по ссылке.</p>
+      </div>
+
+      <!-- Вопрос 4 -->
+      <button class="accordion-btn">
+          <span class="question-text">Что делать, если я пропущу урок?</span>
+          <span class="icon">+</span>
+      </button>
+      <div class="accordion-panel">
+          <p>Все занятия записываются. Вы сможете посмотреть пропущенный урок в удобное время. Также можно согласовать перенос с репетитором.</p>
+      </div>
+  </div>
+</section>
+<!--Конец блока с вопросами-->
+
+
+<!--Нижняя панель-->
+<footer id="site-footer" style="background-color: #a1887f;">
+  <div class="footer-container">
+      <div class="footer-col">
+          <h4>О проекте</h4>
+          <p>Учебный проект с адаптивной вёрсткой и интерактивными элементами.</p>
+      </div>
+      <div class="footer-col">
+          <h4>Навигация</h4>
+          <ul>
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Список элементов</a></li>
+              <li><a href="#">Контакты</a></li>
+          </ul>
+      </div>
+      <div class="footer-col">
+          <h4>Контакты</h4>
+          <p>Email: example@mail.ru</p>
+          <p>Телефон: +7 (999) 000-00-00</p>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>&copy; Онлайн школа математика</p>
+  </div>
+</footer>
+
+  </body>
+</html>

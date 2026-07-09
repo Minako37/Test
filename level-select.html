@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Выбор уровня</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+</head>
+<body class="page-level-select">
+    <!--Голова-->
+    <header id="main-header">
+        <div class="header-container">
+            <a href="#" class="logo">CoffeeMath</a>
+    
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#">Список</a></li>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+    
+            <div class="header-actions">
+              <button class="btn-header trigger-btn">Оставить заявку</button>
+            </div>
+        </div>
+    </header>
+    <!--Конец головы-->
+
+    <div class="choose-wrapper">
+        <div class="choose-card">
+            <h1>☕ Выберите свой уровень</h1>
+            <div class="sub">Определите, с чего начать обучение</div>
+
+            <!-- Группа 5–8 класс -->
+            <div class="level-group">
+                <div class="group-title">5–8 класс</div>
+                <div class="sub-levels">
+                    <button class="sub-level-btn" data-level="5-8_5">5 класс</button>
+                    <button class="sub-level-btn" data-level="5-8_6">6 класс</button>
+                    <button class="sub-level-btn" data-level="5-8_7">7 класс</button>
+                    <button class="sub-level-btn" data-level="5-8_8">8 класс</button>
+                </div>
+            </div>
+
+            <!-- Группа ОГЭ -->
+            <div class="level-group">
+                <div class="group-title">ОГЭ</div>
+                <div class="sub-levels">
+                    <button class="sub-level-btn" data-level="oge_base">ОГЭ</button>
+                </div>
+            </div>
+
+            <!-- Группа ЕГЭ -->
+            <div class="level-group">
+                <div class="group-title">ЕГЭ</div>
+                <div class="sub-levels">
+                    <button class="sub-level-btn" data-level="ege_base">ЕГЭ (база)</button>
+                    <button class="sub-level-btn" data-level="ege_profile">ЕГЭ (профиль)</button>
+                </div>
+            </div>
+
+            <!-- Группа Высшая математика -->
+            <div class="level-group">
+                <div class="group-title">Высшая математика</div>
+                <div class="sub-levels">
+                    <button class="sub-level-btn" data-level="highmath_analysis">Математический анализ</button>
+                    <button class="sub-level-btn" data-level="highmath_linear">Линейная алгебра</button>
+                </div>
+            </div>
+
+            <a href="index.html" class="back-link">← Вернуться на главную</a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.sub-level-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const level = this.dataset.level;
+                window.location.href = `test.html?level=${level}`;
+            });
+        });
+    </script>
+</body>
+</html>

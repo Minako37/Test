@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Тест</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+</head>
+<body class="page-test">
+    <!--Голова-->
+    <header id="main-header">
+        <div class="header-container">
+            <a href="#" class="logo">CoffeeMath</a>
+    
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#">Список</a></li>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+    
+            <div class="header-actions">
+              <button class="btn-header trigger-btn">Оставить заявку</button>
+            </div>
+        </div>
+    </header>
+    <!--Конец головы-->
+
+    <div class="test-wrapper">
+              <!-- Липкий прогресс-бар -->
+    <div class="sticky-progress">
+        <div class="progress-container">
+            <div class="progress-bar" id="test-progress" style="width: 0%;">
+                <span class="progress-glow"></span>
+            </div>
+            <span class="progress-text" id="progress-text">0 / 5</span>
+            <span class="progress-icon">☕</span>
+        </div>
+    </div>
+    <div class="test-card">
+            <h1>📝 Проверка знаний</h1>
+            <div class="subtitle" id="levelDescription">Загрузка...</div>
+
+            <form id="quiz-form">
+                <div id="questions-container"></div>
+                <button type="submit" class="test-btn">Проверить результаты</button>
+            </form>
+
+            <div id="result-box" class="result-box">
+                <div class="score" id="score-display">0/5</div>
+                <div class="recommendation" id="recommendation-text">Ваш уровень: ⭐</div>
+            </div>
+
+            <div class="back-links">
+                <a href="level-select.html">← Выбрать другой уровень</a>
+                <a href="index.html">На главную</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ---------- БАЗА ВОПРОСОВ ----------
+        const questionsData = {
+            '5-8_5': {
+                title: '5 класс',
+                questions: [
+                    { text: 'Сколько будет 2 + 2?', options: ['3', '4', '5', '6'], correct: '4' },
+                    { text: 'Что больше: 0,5 или 0,25?', options: ['0,5', '0,25', 'равны', 'не знаю'], correct: '0,5' },
+                    { text: 'Сколько сантиметров в метре?', options: ['10', '100', '1000', '50'], correct: '100' },
+                    { text: 'Чему равна площадь прямоугольника со сторонами 3 и 4?', options: ['7', '12', '10', '15'], correct: '12' },
+                    { text: 'Какое число делится на 2 без остатка?', options: ['5', '8', '9', '11'], correct: '8' }
+                ]
+            },
+            '5-8_6': {
+                title: '6 класс',
+                questions: [
+                    { text: 'Решите пропорцию: 2/3 = x/9', options: ['3', '6', '9', '12'], correct: '6' },
+                    { text: 'Сколько процентов составляет 20 от 100?', options: ['10%', '20%', '25%', '30%'], correct: '20%' },
+                    { text: 'Найдите НОК чисел 4 и 6', options: ['4', '6', '12', '24'], correct: '12' },
+                    { text: 'Какое число больше: -2 или -5?', options: ['-2', '-5', 'равны', 'не сравнить'], correct: '-2' },
+                    { text: 'Сколько секунд в 3 минутах?', options: ['120', '180', '240', '300'], correct: '180' }
+                ]
+            },
+            '5-8_7': {
+                title: '7 класс',
+                questions: [
+                    { text: 'Решите уравнение: 2x + 5 = 13', options: ['3', '4', '5', '6'], correct: '4' },
+                    { text: 'Найдите значение выражения: (-3)²', options: ['-9', '9', '6', '-6'], correct: '9' },
+                    { text: 'Чему равна сумма углов треугольника?', options: ['90°', '180°', '270°', '360°'], correct: '180°' },
+                    { text: 'Упростите: 3a + 2a - a', options: ['4a', '5a', '6a', '3a'], correct: '4a' },
+                    { text: 'Сколько граней у куба?', options: ['4', '6', '8', '12'], correct: '6' }
+                ]
+            },
+            '5-8_8': {
+                title: '8 класс',
+                questions: [
+                    { text: 'Решите квадратное уравнение: x² - 4 = 0', options: ['x=±2', 'x=±4', 'x=2', 'x=-2'], correct: 'x=±2' },
+                    { text: 'Найдите площадь круга радиуса 3', options: ['9π', '6π', '3π', '12π'], correct: '9π' },
+                    { text: 'Теорема Пифагора: для прямоугольного треугольника с катетами 3 и 4 гипотенуза равна?', options: ['5', '6', '7', '8'], correct: '5' },
+                    { text: 'Что такое функция?', options: ['соответствие', 'число', 'уравнение', 'график'], correct: 'соответствие' },
+                    { text: 'Найдите корень уравнения: √x = 3', options: ['3', '6', '9', '12'], correct: '9' }
+                ]
+            },
+            'oge_base': {
+                title: 'ОГЭ (база)',
+                questions: [
+                    { text: 'Решите уравнение: x² - 9 = 0', options: ['x=±3', 'x=±9', 'x=3', 'x=-3'], correct: 'x=±3' },
+                    { text: 'Сколько процентов составляет 10 от 50?', options: ['10%', '20%', '25%', '30%'], correct: '20%' },
+                    { text: 'Найдите медиану чисел: 3, 5, 7, 9', options: ['5', '6', '7', '8'], correct: '6' },
+                    { text: 'В треугольнике ABC угол A=60°, угол B=40°. Найти угол C', options: ['80°', '60°', '40°', '100°'], correct: '80°' },
+                    { text: 'Упростите: (a³)²', options: ['a⁵', 'a⁶', 'a⁹', 'a¹'], correct: 'a⁶' }
+                ]
+            },
+            
+            'ege_base': {
+                title: 'ЕГЭ (база)',
+                questions: [
+                    { text: 'Решите неравенство: 2^x > 4', options: ['x > 2', 'x < 2', 'x > 1', 'x ≥ 2'], correct: 'x > 2' },
+                    { text: 'Найдите cos 60°', options: ['0.5', '√3/2', '√2/2', '1'], correct: '0.5' },
+                    { text: 'Логарифм: log₂(8) = ?', options: ['2', '3', '4', '1'], correct: '3' },
+                    { text: 'Производная: f(x) = sin x', options: ['cos x', '-cos x', 'sin x', '-sin x'], correct: 'cos x' },
+                    { text: 'Интеграл: ∫ 1/x dx', options: ['ln|x| + C', 'x + C', 'e^x + C', '1/x² + C'], correct: 'ln|x| + C' }
+                ]
+            },
+            'ege_profile': {
+                title: 'ЕГЭ (профиль)',
+                questions: [
+                    { text: 'Решите уравнение: 2cos x = 1', options: ['x = π/3 + 2πk', 'x = π/6 + 2πk', 'x = π/2 + 2πk', 'x = π/4 + 2πk'], correct: 'x = π/3 + 2πk' },
+                    { text: 'Найдите интеграл: ∫ e^x dx', options: ['e^x + C', 'e^{x+1} + C', 'xe^x + C', '1/e^x + C'], correct: 'e^x + C' },
+                    { text: 'Предел: lim_{x→∞} (1/x) = ?', options: ['0', '1', '∞', 'не существует'], correct: '0' },
+                    { text: 'Производная: f(x) = ln x', options: ['1/x', 'x', 'e^x', '1'], correct: '1/x' },
+                    { text: 'Решите систему: x + y = 5, x - y = 1', options: ['x=3, y=2', 'x=2, y=3', 'x=4, y=1', 'x=1, y=4'], correct: 'x=3, y=2' }
+                ]
+            },
+            'highmath_analysis': {
+                title: 'Математический анализ',
+                questions: [
+                    { text: 'Найдите предел: lim_{x→0} (sin x)/x', options: ['1', '0', '∞', 'не существует'], correct: '1' },
+                    { text: 'Производная: f(x) = e^{2x}', options: ['2e^{2x}', 'e^{2x}', '2e^x', 'e^x'], correct: '2e^{2x}' },
+                    { text: 'Интеграл: ∫ (2x) dx', options: ['x² + C', '2x + C', 'x²/2 + C', '2x² + C'], correct: 'x² + C' },
+                    { text: 'Что такое ряд Тейлора?', options: ['разложение функции в бесконечную сумму', 'числовой ряд', 'производная', 'интеграл'], correct: 'разложение функции в бесконечную сумму' },
+                    { text: 'Найдите производную: f(x) = ln(x²)', options: ['2/x', '1/x', '2x', 'x²'], correct: '2/x' }
+                ]
+            },
+            'highmath_linear': {
+                title: 'Линейная алгебра',
+                questions: [
+                    { text: 'Какая матрица является единичной (2×2)?', options: ['[[1,0],[0,1]]', '[[0,1],[1,0]]', '[[1,1],[0,1]]', '[[0,0],[0,0]]'], correct: '[[1,0],[0,1]]' },
+                    { text: 'Сумма векторов (1,2) и (3,4) равна', options: ['(4,6)', '(2,2)', '(4,4)', '(3,8)'], correct: '(4,6)' },
+                    { text: 'Найдите определитель матрицы [[2, 3], [1, 4]]', options: ['5', '6', '7', '8'], correct: '5' },
+                    { text: 'Что такое ранг матрицы?', options: ['максимальное число линейно независимых строк', 'количество элементов', 'сумма элементов', 'минимальное число строк'], correct: 'максимальное число линейно независимых строк' },
+                    { text: 'Какая из матриц является симметричной?', options: ['[[1,2],[2,3]]', '[[1,2],[3,4]]', '[[1,1],[1,1]]', '[[0,1],[1,0]]'], correct: '[[1,2],[2,3]]' }
+                ]
+            }
+        };
+
+        // ---------- Получение уровня из URL ----------
+        const urlParams = new URLSearchParams(window.location.search);
+        const levelParam = urlParams.get('level');
+        let currentLevel = levelParam && questionsData[levelParam] ? levelParam : '5-8_5';
+
+        // ---------- DOM элементы ----------
+        const container = document.getElementById('questions-container');
+        const form = document.getElementById('quiz-form');
+        const resultBox = document.getElementById('result-box');
+        const scoreDisplay = document.getElementById('score-display');
+        const recommendationText = document.getElementById('recommendation-text');
+        const levelDescription = document.getElementById('levelDescription');
+
+        // ---------- Отрисовка вопросов ----------
+        function renderQuestions(levelKey) {
+            const data = questionsData[levelKey];
+            if (!data) return;
+
+            let html = '';
+            data.questions.forEach((q, index) => {
+                const qNum = index + 1;
+                html += `<div class="question-block">
+                            <div class="question-text">${qNum}. ${q.text}</div>
+                            <div class="options">`;
+                q.options.forEach((opt) => {
+                    html += `<label>
+                                <input type="radio" name="q${qNum}" value="${opt}"> ${opt}
+                             </label>`;
+                });
+                html += `</div></div>`;
+            });
+            container.innerHTML = html;
+            resultBox.classList.remove('show');
+            levelDescription.textContent = `Уровень: ${data.title} — ответьте на 5 вопросов`;
+        updateProgress();
+        }
+
+        renderQuestions(currentLevel);
+
+        // ---------- Обработка отправки ----------
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const data = questionsData[currentLevel];
+            const total = data.questions.length;
+            let correct = 0;
+
+            for (let i = 0; i < total; i++) {
+                const qNum = i + 1;
+                const selected = document.querySelector(`input[name="q${qNum}"]:checked`);
+                if (selected && selected.value === data.questions[i].correct) {
+                    correct++;
+                }
+            }
+
+            scoreDisplay.textContent = `${correct}/${total}`;
+            let levelText = '';
+            let recommendation = '';
+
+            const percent = correct / total;
+            if (percent === 1) {
+                levelText = '🔥 Отлично!';
+                recommendation = 'Вы полностью усвоили материал этого уровня. Можно переходить к следующему.';
+            } else if (percent >= 0.6) {
+                levelText = '👍 Хорошо!';
+                recommendation = 'У вас есть небольшие пробелы. Рекомендуем повторить сложные темы.';
+            } else {
+                levelText = '📚 Нужна подготовка';
+                recommendation = 'Рекомендуем начать с базового курса или обратиться к репетитору.';
+            }
+
+            recommendationText.innerHTML = `<strong>${levelText}</strong><br>${recommendation}`;
+            resultBox.classList.add('show');
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        // ---------- ПРОГРЕСС-БАР ----------
+        function updateProgress() {
+    const total = questionsData[currentLevel].questions.length;
+    let answered = 0;
+    for (let i = 1; i <= total; i++) {
+        const radio = document.querySelector(`input[name="q${i}"]:checked`);
+        if (radio) answered++;
+    }
+    const percent = Math.round((answered / total) * 100);
+    const bar = document.getElementById('test-progress');
+    bar.style.width = percent + '%';
+    document.getElementById('progress-text').textContent = `${answered} / ${total}`;
+    // Добавляем пульсацию
+    bar.classList.remove('pulse');
+    // Принудительно перезапускаем анимацию
+    void bar.offsetWidth;
+    bar.classList.add('pulse');
+    const textEl = document.getElementById('progress-text');
+if (answered === total) {
+    textEl.style.color = '#5d4037';
+    textEl.style.fontWeight = '800';
+} else {
+    textEl.style.color = '#4a3729';
+    textEl.style.fontWeight = '700';
+}
+}
+
+// Обновляем прогресс при клике на любой radio
+document.addEventListener('change', function(e) {
+    if (e.target.matches('input[type="radio"]')) {
+        updateProgress();
+    }
+});
+    </script>
+</body>
+</html>
